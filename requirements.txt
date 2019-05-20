@@ -1,0 +1,4 @@
+git+git://github.com/wmeddie/elephas@master#egg=elephas
+Keras==2.2.4
+pydl4j==0.1.4
+
