@@ -28,26 +28,16 @@
 
         <dependency>
             <groupId>org.deeplearning4j</groupId>
-            <artifactId>deeplearning4j-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.deeplearning4j</groupId>
-            <artifactId>deeplearning4j-modelimport</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.deeplearning4j</groupId>
-            <artifactId>dl4j-spark_2.11</artifactId>
-            <version>${project.version}_spark_2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.deeplearning4j</groupId>
             <artifactId>dl4j-spark-parameterserver_2.11</artifactId>
             <version>${project.version}_spark_2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.spark</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
