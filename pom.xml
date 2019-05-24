@@ -90,6 +90,8 @@
                                 <exclude>META-INF/*.SF</exclude>
                                 <exclude>META-INF/*.DSA</exclude>
                                 <exclude>META-INF/*.RSA</exclude>
+                                <exclude>org/apache/**</exclude>
+                                <exclude>com/typesafe/**</exclude>
                             </excludes>
                         </filter>
                     </filters>
