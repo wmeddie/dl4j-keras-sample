@@ -58,6 +58,10 @@ def main(args):
     print('initialize context')
     sc = SparkContext(appName=app_name)
     sc.setLogLevel('WARN')
+
+    Nd4j = sc._jvm.org.nd4j.linalg.factory.Nd4j
+    print(Nd4j.eye(3).toString)
+
     process(sc, args)
     sc.stop()
 
