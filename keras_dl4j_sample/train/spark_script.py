@@ -1,6 +1,6 @@
 import os
 import sys
-from pyspark import SparkContext, SQLContext
+from pyspark import SparkContext
 import elephas
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation

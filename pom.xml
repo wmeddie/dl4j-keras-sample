@@ -25,14 +25,28 @@
             <artifactId>nd4j-native-platform</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.deeplearning4j</groupId>
-            <artifactId>rl4j-core</artifactId>
+            <artifactId>deeplearning4j-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>deeplearning4j-modelimport</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>dl4j-spark_2.11</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>dl4j-spark-parameterserver_2.11</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
