@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>dl4j-spark-parameterserver_2.11</artifactId>
-            <version>${project.version}</version>
+            <version>${project.version}_spark_2</version>
         </dependency>
     </dependencies>
 
