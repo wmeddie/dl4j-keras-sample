@@ -1,18 +1,16 @@
 import os
 import sys
 from pyspark import SparkContext
-import elephas
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 from keras.optimizers import SGD
 from keras.datasets import mnist
 from keras.utils import np_utils
 
-from elephas.spark_model import SparkModel
-from elephas.dl4j import ParameterSharingModel
-from elephas.utils.rdd_utils import to_java_rdd
-
 def process(sc, args):
+    from elephas.dl4j import ParameterSharingModel
+    from elephas.utils.rdd_utils import to_java_rdd
+
     input_data = args if args else [1, 2, 3, 4, 5]
     distr_data = sc.parallelize(input_data)
     result = distr_data.collect()
@@ -64,7 +62,6 @@ def main(args):
 
     process(sc, args)
     sc.stop()
-
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
