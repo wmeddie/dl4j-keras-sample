@@ -66,6 +66,10 @@ def process(sc, args):
 
     print('spark_model has java_spark_model of: %s' % repr(spark_model.java_spark_model))
 
+    print('Setting controller address to: 10.0.0.21')
+    spark_model.java_spark_model.trainingMaster.setControllerAddress("10.0.0.21")
+
+
     print('training model...')
     spark_model.fit_rdd(train_rdd, epochs=20)
     print('training model finished.')
