@@ -27,6 +27,12 @@
         </dependency>
 
         <dependency>
+            <groupId>og.nd4j</groupId>
+            <artifactId>nd4j-serde</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>dl4j-spark-parameterserver_2.11</artifactId>
             <version>${project.version}_spark_2</version>
