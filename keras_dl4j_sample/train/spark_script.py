@@ -11,6 +11,7 @@ def process(sc, args):
     print('importing elephas classes')
     from elephas.dl4j import ParameterSharingModel
     from elephas.utils.rdd_utils import to_java_rdd
+    MnistDataSetIterator = sc._jvm.org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator
 
     print('doing some spark stuff')
     input_data = args if args else [1, 2, 3, 4, 5]
@@ -28,8 +29,24 @@ def process(sc, args):
     y_train = np_utils.to_categorical(y_train, 10)
     y_test = np_utils.to_categorical(y_test, 10)
 
-    print('Converting numpy array to rdd.')
-    train_rdd = to_java_rdd(sc._jsc, x_train, y_train, 64)
+    #print('Converting numpy array to rdd.')
+    #train_rdd = to_java_rdd(sc._jsc, x_train, y_train, 64)
+
+    print('Creating DL4J MNIST RDD')
+    iter_train = MnistDataSetIterator(64, True, 12345)
+    #iter_test = MnistDataSetIterator(64, False, 12345)
+
+    train_data_list = []
+    #test_data_list = []
+
+    while iter_train.hasNext():
+        train_data_list.append(iter_train.next())
+    #while iter_test.hasNext():
+    #    test_data_list.append(iter_test.next())
+
+    train_rdd = sc.parallelize(train_data_list)
+    #test_rdd = sc.parallelize(test_data_list)
+
 
     print('building model')
     model = Sequential()
@@ -52,6 +69,7 @@ def process(sc, args):
     spark_model.fit_rdd(train_rdd, epochs=20)
     print('training model finished.')
 
+    # XXX: This is probably not the same held-out test set.
     score = spark_model.master_network.evaluate(x_test, y_test, verbose=2)
 
     print('Test Accuracy: %s', score[1])
