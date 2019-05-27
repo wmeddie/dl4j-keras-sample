@@ -65,7 +65,7 @@ def main(args):
     sc.setLogLevel('WARN')
 
     Nd4j = sc._jvm.org.nd4j.linalg.factory.Nd4j
-    print(Nd4j.eye(3).toString)
+    print(Nd4j.eye(3).toString())
 
     print('starting process...')
     process(sc, args)
