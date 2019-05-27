@@ -1,6 +1,6 @@
 import os
 import sys
-from pyspark import SparkContext
+from pyspark import SparkContext, SparkConf
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 from keras.optimizers import SGD
@@ -63,7 +63,10 @@ def main(args):
     app_name = '{0}-{1}'.format(job_name, 'batchId')
 
     print('initialize context')
-    sc = SparkContext(appName=app_name)
+    sparkConf = SparkConf()
+    sparkConf.set("spark.kryo.registrator", "org.nd4j.Nd4jRegistrator")
+
+    sc = SparkContext(appName=app_name, conf=sparkConf)
     sc.setLogLevel('WARN')
 
     Nd4j = sc._jvm.org.nd4j.linalg.factory.Nd4j
