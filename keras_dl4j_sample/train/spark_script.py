@@ -46,7 +46,7 @@ def process(sc, args):
     print('converting model')
     spark_model = ParameterSharingModel(sc._jsc, model, batch_size=64, num_workers=4)
 
-    print('spark_model has java_spark_model of: ' + spark_model.java_spark_model)
+    print('spark_model has java_spark_model of: %s' % repr(spark_model.java_spark_model))
 
     print('training model...')
     spark_model.fit_rdd(train_rdd, epochs=20)
