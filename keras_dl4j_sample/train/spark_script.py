@@ -12,6 +12,7 @@ def process(sc, args):
     from elephas.dl4j import ParameterSharingModel
     from elephas.utils.rdd_utils import to_java_rdd
     MnistDataSetIterator = sc._jvm.org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator
+    ArrayList = sc._jvm.java.util.ArrayList
 
     print('doing some spark stuff')
     input_data = args if args else [1, 2, 3, 4, 5]
@@ -36,15 +37,15 @@ def process(sc, args):
     iter_train = MnistDataSetIterator(64, True, 12345)
     #iter_test = MnistDataSetIterator(64, False, 12345)
 
-    train_data_list = []
+    train_data_list = ArrayList()
     #test_data_list = []
 
     while iter_train.hasNext():
-        train_data_list.append(iter_train.next())
+        train_data_list.add(iter_train.next())
     #while iter_test.hasNext():
     #    test_data_list.append(iter_test.next())
 
-    train_rdd = sc.parallelize(train_data_list)
+    train_rdd = sc._jsc.parallelize(train_data_list)
     #test_rdd = sc.parallelize(test_data_list)
 
 
