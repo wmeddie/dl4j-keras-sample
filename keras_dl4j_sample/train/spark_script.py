@@ -29,7 +29,7 @@ def process(sc, args):
     y_test = np_utils.to_categorical(y_test, 10)
 
     print('Converting numpy array to rdd.')
-    train_rdd = to_java_rdd(sc, x_train, y_train, 64)
+    train_rdd = to_java_rdd(sc._jsc, x_train, y_train, 64)
 
     print('building model')
     model = Sequential()
