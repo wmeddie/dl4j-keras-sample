@@ -28,7 +28,7 @@
 
         <dependency>
             <groupId>og.nd4j</groupId>
-            <artifactId>nd4j-kyro_2.11</artifactId>
+            <artifactId>nd4j-kryo_2.11</artifactId>
             <version>${project.version}</version>
         </dependency>
 
