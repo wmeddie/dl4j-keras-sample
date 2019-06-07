@@ -99,9 +99,9 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
 
-    author='Aleksey Zhukov',
+    author='Nobody',
 
-    author_email='alekseyig@hotmail.com',
+    author_email='you@example.com',
 
     packages=find_packages(include=['test_spark_submit', 'test_spark_submit.*'],
                            exclude=['*.test.*', '*.test']),
